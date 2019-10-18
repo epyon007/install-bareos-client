@@ -38,3 +38,4 @@ And a small version of cowsay that i use in my playbooks
 
 - [x] Working in Debian and Ubuntu
 - [ ] Working in CentOS and redhat
+# install-bareos-client
