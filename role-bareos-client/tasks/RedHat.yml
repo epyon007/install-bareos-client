@@ -1,0 +1,20 @@
+---
+- name: Check if Bareos repo is already configured.
+  stat: path="{{ repo_bareos_file_path }}"
+  register: repo_bareos_file_result
+
+- name: Set Bareos repo for RHEL/CentOS
+  yum_repository:
+    name: bareos
+    description: 'bareos repo details'
+    baseurl: "http://download.bareos.org/bareos/{{ repo_bareos_release }}/{{ repo_bareos_distro }}/"
+    gpgcheck: yes
+    gpgkey: "http://download.bareos.org/bareos/{{ repo_bareos_release }}/{{ repo_bareos_distro}}/repodata/repomd.xml.key"
+    enabled: yes
+    state: present
+  when:
+    - not repo_bareos_file_result.stat.exists
+
+- name: Install Bareos Client
+  yum:
+    name: "{{ rhel_pkgs }}"

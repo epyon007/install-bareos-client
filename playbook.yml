@@ -1,0 +1,6 @@
+- name: Install Bareos Agent
+  hosts: [allhosts]
+  gather_facts: true
+  become: yes
+  roles:
+    - role-bareos-client
