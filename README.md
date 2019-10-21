@@ -3,21 +3,7 @@
 This playbook will install all the applications that i need for my work enviroment.
 
 1. That includes:
-    - apt-transport-https
-    - ca-certificates
-    - software-properties-common
-    - atom
-    - python
-    - python3
-    - cowsay
-    - htop
-    - ansible
-    - python-pip
-    - python3-pip
-    - terminator
-    - docker-ce
-    - google-chrome
-    - franz
+    - bareos-client
 
 And a small version of cowsay that i use in my playbooks
 
