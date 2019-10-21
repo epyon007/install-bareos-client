@@ -1,14 +1,14 @@
 ---
 - name: Add Bareos GPG Key
   apt_key:
-    url: "{{ bareos_url_debian }}/Release.key"
+    url: "{{ bareos_url_ubuntu }}/Release.key"
     state: present
 #  loop:
 #    - http://download.bareos.org/bareos/release/18.2/Release.gpg
 
 - name: Add Bareos Repository
   apt_repository:
-    repo: "deb {{ bareos_url_debian }} /"
+    repo: "deb {{ bareos_url_ubuntu }} /"
     state: present
   loop:
 
@@ -18,7 +18,7 @@
 
 - name: Install Bareos Client
   apt:
-    name: "{{ debian_pkgs }}"
+    name: "{{ ubuntu_pkgs }}"
 
 # - name: Template Client Configuration
 #   template:
