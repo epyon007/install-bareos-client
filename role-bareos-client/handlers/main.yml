@@ -12,11 +12,9 @@
 
 - name: restart bareos_client
   service:
-    name: "{{ item }}"
+    name: bareos-fd
     state: restarted
     enabled: yes
-  loop:
-    - bareos-fd
 
 # - name: restart bareos-dir
 #   service:

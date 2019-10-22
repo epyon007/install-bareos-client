@@ -1,11 +1,10 @@
-- hosts: [server]
-  tasks:
-    - name: Template Client Configuration - Server side
-      template:
-        src: client-fd.conf.j2
-        dest: /etc/bareos/bareos-dir.d/client/{{ client_name }}-fd.conf
-        owner: bareos
-        group: bareos
-        mode: 0640
-      notify:
-        - restart bareos_server
+- name: Template Client Configuration - Server side
+  template:
+    src: client-fd.conf.j2
+    dest: /etc/bareos/bareos-dir.d/client/{{ client_name }}-fd.conf
+    owner: bareos
+    group: bareos
+    mode: 0640
+  delegate_to: 192.168.99.10
+  notify:
+    - restart bareos_server

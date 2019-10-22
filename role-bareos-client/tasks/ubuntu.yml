@@ -20,18 +20,19 @@
   apt:
     name: "{{ ubuntu_pkgs }}"
 
-- name: Template Client Configuration
+- name: Include Client Configuration - Server side
+  include_tasks: server-configuration.yml
+
+- name: Template Client Configuration - Client side
   template:
-    src: client-fd.conf.j2
+    src: bareos-dir.conf.j2
     dest: /etc/bareos/bareos-fd.d/director/bareos-dir.conf
     owner: bareos
     group: bareos
     mode: 0640
   notify:
     - restart bareos_client
-  register: client_archive
 
-- name: Include Client Configuration - Server side
-  include_tasks:
-    file: server-configuration.yml
-  when: client_archive.stat.changed
+#- name: Checking if client template exists
+#   command: ls /etc/bareos/bareos-fd.d/director/bareos-dir.conf
+#   register: client_archive
