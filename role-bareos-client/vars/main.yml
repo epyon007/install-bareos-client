@@ -24,6 +24,7 @@ rhel_pkgs:
 ## Vars relacionadas a configuração do client
 client_name: "{{ ansible_hostname }}"
 client_ip: "{{ ansible_eth1.ipv4.address }}"
+#client_ip: "{{ ansible_enp0s8.ipv4.address }}"   #### 
 #client_ip: "{{ ansible_default_ipv4.address }}"  #### Utilizar este em produção
 
 # client_ip

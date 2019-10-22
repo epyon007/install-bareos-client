@@ -22,22 +22,6 @@
 - name: Include Client Configuration - Server side
   include_tasks: server-configuration.yml
 
-# - name: Start service firewalld, if not started
-#   service:
-#     name: firewalld
-#     state: started
-#
-# - firewalld:
-#     service: bareos-fd
-#     permanent: yes
-#     immediate: yes
-#     state: enabled
-#
-# - name: Restart service Firewalld
-#   service:
-#     name: firewalld
-#     state: restarted
-
 - name: Template Client Configuration - Client side
   template:
     src: bareos-dir.conf.j2
