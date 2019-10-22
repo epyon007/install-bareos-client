@@ -1,7 +1,6 @@
 ---
 # vars file for roles
-## Vars relacionadas a Debian / Ubuntu
-
+## Vars relacionadas a Debian
 dist_debian: "{{ ansible_os_family }}_{{ ansible_distribution_version.split('.')[0] }}.0"
 release: 'release/18.2'
 bareos_url_debian: "http://download.bareos.org/bareos/{{ release }}/{{ dist_debian }}"
@@ -9,7 +8,6 @@ debian_pkgs:
   - bareos-client
 
 ## Vars relacionadas a Ubuntu
-
 dist_ubuntu: "{{ ansible_distribution }}_{{ ansible_distribution_version }}"
 release: 'release/18.2'
 bareos_url_ubuntu: "http://download.bareos.org/bareos/{{ release }}/x{{ dist_ubuntu }}"
@@ -17,9 +15,12 @@ ubuntu_pkgs:
   - bareos-client
 
 ## Vars relacionadas a RedHat
-
 repo_bareos_file_path: "/etc/yum.repos.d/bareos.repo"
 repo_bareos_release: "release/18.2"  #Example: release/17.2 or experimental/nightly
 repo_bareos_distro: "RHEL_7"
 rhel_pkgs:
   - bareos-client
+
+## Vars relacionadas a configuração do client
+client_name: "{{ ansible_hostname }}"
+# client_ip:

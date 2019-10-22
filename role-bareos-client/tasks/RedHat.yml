@@ -18,3 +18,13 @@
 - name: Install Bareos Client
   yum:
     name: "{{ rhel_pkgs }}"
+
+- name: Template Client Configuration
+  template:
+    src: client-fd.conf.j2
+    dest: /etc/bareos/bareos-fd.d/director/bareos-dir.conf
+    owner: bareos
+    group: bareos
+    mode: 0640
+  notify:
+    - restart bareos_client

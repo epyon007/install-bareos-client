@@ -20,36 +20,18 @@
   apt:
     name: "{{ ubuntu_pkgs }}"
 
-# - name: Template Client Configuration
-#   template:
-#     src: .j2
-#     dest:
-#     owner:
-#     group: bareos
-#     mode: 640
+- name: Template Client Configuration
+  template:
+    src: client-fd.conf.j2
+    dest: /etc/bareos/bareos-fd.d/director/bareos-dir.conf
+    owner: bareos
+    group: bareos
+    mode: 0640
+  notify:
+    - restart bareos_client
+  register: client_archive
 
-
-
-# - name: Download DEB packages
-#   get_url:
-#     url: "{{ item.url }}"
-#     dest: "{{ item.dest }}"
-#   loop:
-#     - { url: 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb', dest: '/opt/' }
-#     - { url: 'https://github.com/meetfranz/franz/releases/download/v5.1.0/franz_5.1.0_amd64.deb', dest: '/opt/' }
-
-# - name: Install a .deb package
-#   apt:
-#     deb: /opt/{{ item }}
-#   loop:
-#     - google-chrome-stable_current_amd64.deb
-#     - franz_5.1.0_amd64.deb
-
-# - name: install pip modules
-#   pip:
-#     name: "{{ item }}"
-#   loop:
-#     - docker
-#     - boto
-#     - boto3
-#     - botocore
+- name: Include Client Configuration - Server side
+  include_tasks:
+    file: server-configuration.yml
+  when: client_archive.stat.changed

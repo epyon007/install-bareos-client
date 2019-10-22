@@ -1,5 +1,5 @@
 - name: Install Bareos Agent
-  hosts: [allhosts]
+  hosts: [teste]
   gather_facts: true
   become: yes
   roles:

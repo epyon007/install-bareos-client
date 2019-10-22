@@ -1,16 +1,23 @@
 ---
 # handlers file for roles
-- name: restart bareos
+- name: restart bareos_server
   service:
     name: "{{ item }}"
     state: restarted
     enabled: yes
   loop:
     - bareos-fd
-  #  - apache2
-  #  - bareos-dir
-  #  - bareos-sd
-  
+    - bareos-dir
+    - bareos-sd
+
+- name: restart bareos_client
+  service:
+    name: "{{ item }}"
+    state: restarted
+    enabled: yes
+  loop:
+    - bareos-fd
+
 # - name: restart bareos-dir
 #   service:
 #     name: bareos-dir
