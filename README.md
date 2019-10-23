@@ -7,7 +7,5 @@ Esta playbook realiza a instalação do cliente do Bareos para execução de bac
 - **./templates/** - **Arquivo que define os padrões a serem seguidos nos arquivos de configuração da aplicação.**
 - **playbook.yml** - **Especialmente o campo "hosts" caso queira replicar o ambiente em máquinas virtuais.**
 
-And a small version of cowsay that i use in my playbooks
-
 - [x] Working in Debian and Ubuntu
 - [x] Working in CentOS and redhat
