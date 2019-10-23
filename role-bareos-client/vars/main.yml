@@ -1,31 +1,30 @@
 ---
 # vars file for roles
-## Vars relacionadas a Debian
+## Vars relacionadas a hosts Debian
 dist_debian: "{{ ansible_os_family }}_{{ ansible_distribution_version.split('.')[0] }}.0"
 release: 'release/18.2'
 bareos_url_debian: "http://download.bareos.org/bareos/{{ release }}/{{ dist_debian }}"
 debian_pkgs:
   - bareos-client
 
-## Vars relacionadas a Ubuntu
+## Vars relacionadas a hosts Ubuntu
 dist_ubuntu: "{{ ansible_distribution }}_{{ ansible_distribution_version }}"
 release: 'release/18.2'
 bareos_url_ubuntu: "http://download.bareos.org/bareos/{{ release }}/x{{ dist_ubuntu }}"
 ubuntu_pkgs:
   - bareos-client
 
-## Vars relacionadas a RedHat
+## Vars relacionadas a hosts RedHat
 repo_bareos_file_path: "/etc/yum.repos.d/bareos.repo"
 repo_bareos_release: "release/18.2"
 repo_bareos_distro: "RHEL_7"
 rhel_pkgs:
   - bareos-client
 
-## Vars relacionadas a configuração do client
+## Vars relacionadas a configurações de templates
+server_ip: '192.168.99.10'
 client_name: "{{ ansible_hostname }}"
 client_ip: "{{ ansible_eth1.ipv4.address }}"
-#client_ip: "{{ ansible_enp0s8.ipv4.address }}"   #### 
+#client_ip: "{{ ansible_enp0s8.ipv4.address }}"   ####
 #client_ip: "{{ ansible_default_ipv4.address }}"  #### Utilizar este em produção
-
-# client_ip
-# client_ip:
+bareos_client_password: "4linux"

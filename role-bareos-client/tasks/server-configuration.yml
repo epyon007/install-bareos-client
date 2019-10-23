@@ -1,10 +1,10 @@
-- name: Template Client Configuration - Server side
+- name: Template Client File Daemon Configuration - Server side
   template:
     src: client-fd.conf.j2
     dest: /etc/bareos/bareos-dir.d/client/{{ client_name }}-fd.conf
     owner: bareos
     group: bareos
     mode: 0640
-  delegate_to: 192.168.99.10
+  delegate_to: "{{ server_ip }}"
   notify:
     - restart bareos_server

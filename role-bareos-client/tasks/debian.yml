@@ -21,7 +21,7 @@
 - name: Include Client Configuration - Server side
   include_tasks: server-configuration.yml
 
-- name: Template Client Configuration - Client side
+- name: Template bareos-dir.conf - Client side
   template:
     src: bareos-dir.conf.j2
     dest: /etc/bareos/bareos-fd.d/director/bareos-dir.conf
@@ -30,4 +30,13 @@
     mode: 0640
   notify:
     - restart bareos_client
-#  register: client_archive
+
+- name: Template bconsole.conf - Client side
+  template:
+    src: bconsole.conf.j2
+    dest: /etc/bareos/bconsole.conf
+    owner: bareos
+    group: bareos
+    mode: 0640
+  notify:
+    - restart bareos_client
